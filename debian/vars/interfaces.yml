@@ -1,0 +1,6 @@
+vm_ip: 192.168.2.2
+vm_port: 22
+destination_port: 50202
+in_interface: vmbr0
+source_ip: 0.0.0.0/0
+destination_ip: 0.0.0.0/0

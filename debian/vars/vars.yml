@@ -1,0 +1,8 @@
+# vars.yml
+
+# Variables pour la tâche "Ajouter un nouvel utilisateur"
+new_user_name: ando
+new_user_password: "zKQhgf5DTk"  # Remplacez par le mot de passe réel en texte brut
+
+# Variable pour la tâche "Configurer SSH pour l'authentification par mot de passe"
+ssh_password_authentication: "yes"

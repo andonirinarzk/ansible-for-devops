@@ -1,0 +1,20 @@
+---
+- name: Add redirection to VM
+  hosts: localhost
+  become: yes
+
+  tasks:
+    - name: Forward SSH traffic to VM
+      ansible.builtin.iptables:
+        table: nat
+        chain: PREROUTING
+        in_interface: "{{ in_interface }}"
+        protocol: tcp
+        match: tcp
+        source: "{{ source_ip }}"
+        source: "{{ destination_ip }}"
+        destination_port: "{{ destination_port }}"
+        to_destination: "{{ vm_ip }}:{{ vm_port }}"
+        jump: DNAT
+        comment: SSH traffic to VM
+      become: yes

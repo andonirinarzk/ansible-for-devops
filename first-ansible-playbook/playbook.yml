@@ -1,6 +1,17 @@
 ---
-- hosts: all
+- hosts: test
   become: yes
+
+  pre_tasks:
+    - name: updater apt
+      become: true
+      apt:
+        upgrade: yes
+
+    - name: Install dependencies for chrony.
+      apt: 
+        name: python3
+        state: present
 
   tasks:
   - name: Ensure chrony (for time synchronization) is installed.
@@ -15,7 +26,7 @@
       enabled: yes
 
 # The same as the above play, but in super-compact form!
-- hosts: all
+- hosts: test
   become: yes
   tasks:
   - dnf: name=chrony state=present
